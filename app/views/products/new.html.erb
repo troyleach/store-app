@@ -1,0 +1,33 @@
+<section>
+
+<h2>Please add a Product</h2>
+
+<%= form_tag '/products' do %>
+
+  <div>
+    <%= label_tag :price %>
+    <%= text_field_tag :price %>
+  </div>
+<br>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+<br>
+  <%= label_tag :image %>
+  <%= text_field_tag :image %>
+<br>
+  <%= label_tag :description %>
+  <%= text_field_tag :description %>
+<br>
+  <%= label_tag :category %>
+  <%= text_field_tag :category %>
+<br>
+  <%= label_tag :vendor_id %>
+  <%= text_field_tag :vendor_id %>
+<br>
+  <%= submit_tag "Add Product" %>
+
+<% end %>
+
+</section>
+
+
