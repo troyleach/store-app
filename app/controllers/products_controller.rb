@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   def create
     vendor = Vendor.find_by(:name => params[:vendor_name])
 
-    Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor => params[:vendor]})
+    Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id })
 
     @new_product = Product.last
 
@@ -59,7 +59,8 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => params[:vendor_id]})
+    vendor = Vendor.find_by(:name => params[:vendor_name])
+    @product.update({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id})
   end
   
 
