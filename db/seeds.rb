@@ -1,7 +1,4 @@
 User.create!([
-  {email: "troyleach29@gmail.com", encrypted_password: "$2a$10$9xNakix1Q4z4jfQQ.xMp4OmBK1WXO0.8/.64BTuqTR1fhpy53ky82", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 9, current_sign_in_at: "2015-02-21 19:57:00", last_sign_in_at: "2015-02-21 19:00:19", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: nil},
-  {email: "rachel@test.com", encrypted_password: "$2a$10$E0m.UvLwQAjvvgOg4UoEbOQlPneVWetuyrzccrIjzDaGe9QrlLMre", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-19 04:34:57", last_sign_in_at: "2015-02-19 04:34:57", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: nil},
-  {email: "test@testemail.com", encrypted_password: "$2a$10$2smlsk/gM3ADLt4zxIqa5.mJOPfH9YjrAfxti/oS3rCERWpaGvEa.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-22 05:51:41", last_sign_in_at: "2015-02-22 05:51:41", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: nil},
   {email: "testing@test.com", encrypted_password: "$2a$10$Y7Sl5BqgdmYZsZDHbmdy8OuJt2tO3D3.ZZbzLBfYAtJmfUMTha8Oe", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2015-02-22 06:12:35", last_sign_in_at: "2015-02-22 06:03:10", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: "troyboy"}
 ])
 Image.create!([
