@@ -1,7 +1,3 @@
-User.create!([
-  {email: "testing@test.com", encrypted_password: "$2a$10$Y7Sl5BqgdmYZsZDHbmdy8OuJt2tO3D3.ZZbzLBfYAtJmfUMTha8Oe", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 4, current_sign_in_at: "2015-02-23 00:20:53", last_sign_in_at: "2015-02-22 22:27:29", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: "troyboy"},
-  {email: "knet@gmail.com", encrypted_password: "$2a$10$4lOk4eOTHb4yQUoOeOTwDuh.5PxKRCBfQ/wSGyqqrsVIhm4QrObd.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2015-02-23 02:23:53", last_sign_in_at: "2015-02-23 02:23:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: "kent"}
-])
 Image.create!([
   {image_url: "http://i01.i.aliimg.com/wsphoto/v5/694500713_1/New-2015-font-b-Luxury-b-font-Analog-Fashion-Trendy-Sports-font-b-Men-b-font.jpg", product_id: 11},
   {image_url: "http://i01.i.aliimg.com/img/pb/714/493/616/616493714_529.jpg", product_id: 11},
