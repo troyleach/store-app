@@ -31,8 +31,6 @@ class ProductsController < ApplicationController
 
   def create
     vendor = Vendor.find_by(:name => params[:vendor_name])
-    puts "WHAT DOES THIS SAY"
-    p vendor.id
 
     Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id })
 
