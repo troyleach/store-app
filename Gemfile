@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 #added this line per heroku
-ruby '2.0.0'
+ruby '2.1.2'
 
 gem 'seed_dump'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
