@@ -30,9 +30,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    vendor = Vendor.find_by(:name => params[:vendor_name])
+    @vendor = Vendor.find_by(:name => params[:vendor_name])
 
-    Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id })
+    Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => @vendor.id })
 
     @new_product = Product.last
 
