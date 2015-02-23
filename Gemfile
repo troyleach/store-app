@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
+#added this line per heroku
+ruby '2.0.0'
 
 gem 'seed_dump'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'devise'
 gem 'rails', '4.2.0'
+
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -26,6 +29,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
