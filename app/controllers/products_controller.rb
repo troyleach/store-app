@@ -31,6 +31,8 @@ class ProductsController < ApplicationController
 
   def create
     vendor = Vendor.find_by(:name => params[:vendor_name])
+    puts "WHAT DOES THIS SAY"
+    p vendor.id
 
     Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id })
 
@@ -38,7 +40,7 @@ class ProductsController < ApplicationController
 
     flash[:success] = "This Product added"
     redirect_to "/products/#{@new_product.id}"
-    # could do this redirect_to "/products/params[:id]"
+    
   end
 
   def show
