@@ -49,8 +49,10 @@
               <li><a href="/users/sign_in">login</a></li>
             <li><a href="/users/sign_up">Sign-up</a></li>
             <% end %>
+            <li class="cart_font"><a href="carted-products"><span class="glyphicon glyphicon-shopping-cart shopping_cart" aria-hidden="true"></a></span>cart</li>
             
           </ul>
+          
           <%= form_tag '/products', :method => :get, :class => "navbar-form navbar-right" do %>
             <%= text_field_tag :search %>
             <%= submit_tag "Search" %>
@@ -78,8 +80,8 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-      <span class="inner_e">E</span>
-      <span id="logo">xpensive Stuff</span>
+      <span class="inner_e">M</span>
+      <span id="logo">Things for Men</span>
       <!-- <span class="luxury">Luxury</span> -->
     
   </header>

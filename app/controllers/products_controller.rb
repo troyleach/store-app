@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
     end
 
     if params[:category]
-      @products = @products.where(:category => params[:category])
+      @products = Category.find_by(:name => params[:category]).products
       @discount_display = "Category: #{params[:category].capitalize}"
     end
 

@@ -1,0 +1,11 @@
+<h1>YOUR ORDER</h1>
+
+<% @carted_products.each do |carted_product| %>
+ <h3><%= carted_product.product.title %></h3>
+ <img src="<%= carted_product.product.image %>" %>
+ <h4><%= carted_product.quantity %></h4>
+<% end %>
+
+<% form_for "/orders/#{@order.id}", :method => :patch do %>
+  <%= submit_tag "Complete Purchase!" %>
+<% end -%>

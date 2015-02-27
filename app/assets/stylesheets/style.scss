@@ -8,7 +8,12 @@ html, body {
   height: 100%;
 }
 
+.navbar {
+// z-index: -1;
+}
+
 .alert-success {
+  color: #000000;
   background-color: green;
 }
 
@@ -28,6 +33,21 @@ hr {
   margin-right: auto;
   border-style: inset;
   border-width: 1px;
+}
+
+.shopping_cart {
+  color: red;
+  font-size: 25px;
+  top: 24px;
+  margin-left: 1%;
+
+}
+
+.cart_font {
+  color: #ffffff;
+  padding-top: 0;
+  text-align: center;
+  top: -30px;
 }
 
 .container {
@@ -53,22 +73,24 @@ hr {
 
 header {
   background-color: #101010;
-  height: 150px;
-  padding: 0 0 0 0; 
+  margin-top: 65px;
+  height: 100px;
+  padding: 0 0 0 0;
+  z-index: -1; 
 }
 
 #logo {
   border: none;
   font-size: 3.5em;
   position: absolute;
-  padding: 5.6% 0 0 1.5%;
+  padding: 0 0 0 1.5%;
   margin-left: 80px;
 }
 
 .inner_e {
   color: #611427;
   border: 5px solid #611427;
-  margin: 5.5% 0 0 1%;
+  margin: 0 0 0 1%;
   text-align: center;
   width: 75px;
   height: 75px;

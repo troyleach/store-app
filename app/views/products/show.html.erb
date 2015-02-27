@@ -43,18 +43,20 @@
         </tr>
       </table>
       <br>
+      <!-- % if current_user % this would be non devise-->
+      <!-- this is using devise -->
+      <% if user_signed_in? %> 
       <h4>Buy this product</h4>
+        <%= form_tag "/carted_products" do %>
+        <%= form_tag %>
 
-      <%= form_tag "/orders" do %>
-
-        <div>
-          <%= label_tag :quantity %>
-          <%= text_field_tag :quantity %>
-          <%= submit_tag "BUY NOW" %>
-        </div>
-          <%= hidden_field_tag :product_id, @product.id %>
-
-  
+          <div>
+            <%= label_tag :quantity %>
+            <%= text_field_tag :quantity %>
+            <%= submit_tag "Add to cart" %>
+          </div>
+            <%= hidden_field_tag :product_id, @product.id %>
+        <% end %>
       <% end %>
     </div>
     <hr>
