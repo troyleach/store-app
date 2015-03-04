@@ -2,32 +2,65 @@
 
 <h2>Please add a Product</h2>
 
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+ 
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_tag '/products' do %>
 
   <div>
     <%= label_tag :price %>
-    <%= text_field_tag :price %>
+    <%= text_field_tag :price, @product.price %>
   </div>
 <br>
   <%= label_tag :title %>
-  <%= text_field_tag :title %>
+  <%= text_field_tag :title, @product.title %>
 <br>
   <%= label_tag :image %>
-  <%= text_field_tag :image %>
+  <%= text_field_tag :image, @product.image %>
 <br>
   <%= label_tag :description %>
-  <%= text_field_tag :description %>
+  <%= text_field_tag :description, @product.description %>
 <br>
-  <%= label_tag :category %>
-  <%= text_field_tag :category %>
+  <%= label_tag :category_id %>
+  <%= text_field_tag :category_id %>
 <br>
-  <%= label_tag :vendor_name %>
-  <%= text_field_tag :vendor_name %>
+  <%= label_tag :vendor_id %>
+  <%= text_field_tag :vendor_id, @product.vendor_id %>
 <br>
   <%= submit_tag "Add Product" %>
 
 <% end %>
 
 </section>
+<section>
+  <div class="col-lg-4 col-md-4 vendor_names">
+  <h4>Vendor</h4>
+  <ul>
+    <% @vendor_name.each do |vendor_name| %>
+     <li><%= vendor_name.name %></li>
+    <% end %>
+  </ul>
+  </div>
 
 
+  <div class="col-lg-4 col-md-4 categories">
+    <h4>Categories</h4>
+    <ul>
+      <% @product_category_name.each do |category| %>
+       <li><%= category.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div><!-- End of edit_wrapper -->
+
+<!-- need to change vendor_id BACK into vendor_name -->
+</section>

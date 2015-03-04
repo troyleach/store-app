@@ -1,3 +1,5 @@
+// the light gray color for the body text is #333333, a nice color red color: #d52121;
+
 * {
   margin: 0;
 }
@@ -10,6 +12,14 @@ html, body {
 
 .navbar {
 // z-index: -1;
+}
+
+.sr-only {
+  background-color: red;
+}
+
+.nav_current_user {
+  color: #d52121;
 }
 
 .alert-success {

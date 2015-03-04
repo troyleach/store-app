@@ -1,11 +1,79 @@
-<h1>YOUR ORDER</h1>
+<h2>YOUR ORDER</h2>
 
-<% @carted_products.each do |carted_product| %>
- <h3><%= carted_product.product.title %></h3>
- <img src="<%= carted_product.product.image %>" %>
- <h4><%= carted_product.quantity %></h4>
-<% end %>
+<div class="carted_product_container row">
+  <div class="carted_product_header_item col-lg-3 col-md-3">
+  <p>Items in your cart</p>
+  </div>
 
-<% form_for "/orders/#{@order.id}", :method => :patch do %>
-  <%= submit_tag "Complete Purchase!" %>
-<% end -%>
+  <div class="carted_product_header_empty col-lg-3 col-md-3">
+  <p></p>
+  </div>
+
+  <div class="carted_product_header_price col-lg-3 col-md-3">
+  <p>Price</p>
+  </div>
+
+  <div class="carted_product_header_quantity col-lg-3 col-md-3">
+    <p>Quantity</p>
+  </div>
+
+
+  <!-- ######################################################## -->
+  
+
+  <% @carted_products.each do |carted_product| %>
+    <hr class="carted_product_devider">
+
+    <div class="carted_product_image col-lg-3 col-md-3">
+    <img src="<%= carted_product.product.image  %>" width="150">
+    </div>
+
+    <div class="carted_product_info col-lg-3 col-md-3">
+       <p><a href="/products/<%= carted_product.product.id %>"><h5><%= carted_product.product.title %></h4></a></p>
+       <hr>
+       <p><%= carted_product.product.title %></p>
+       <a href="/" data-method="delete" rel="nofollow" data-confirm="Are you sure you want to delete <%= carted_product.product.title %>">Delete</a>
+       
+    </div>
+
+    <div class="carted_product_price col-lg-3 col-md-3">
+    <p class="price_font"><%= number_to_currency(carted_product.product.price) %></p>
+    </div>
+
+    <div class="carted_product_quantity col-lg-3 col-md-3">
+      <p><%= carted_product.quantity %></p>
+    </div>
+  <% end %>
+  <!-- ######################################################## -->
+
+  
+  <hr class="carted_product_devider">
+  
+  <div class="row">
+    <div class="carted_product_footer_empty col-lg-3 col-md-3">
+    <p></p>
+    </div>
+
+    <div class="carted_product_footer_subtotal col-lg-3 col-md-3">
+    <p>Subtotal:</p>
+    </div>
+
+    <div class="carted_product_footer_price col-lg-3 col-md-3">
+    <p><%= number_to_currency(@carted_products_subtotal) %></p>
+    </div>
+
+    <div class="carted_product_footer_quantity col-lg-3 col-md-3">
+    <p><%= @carted_products_quantity_total %> Items</p>  
+    
+    </div>
+    
+  </div>
+
+
+<!-- ######################################################## -->
+
+
+ 
+  <% form_for "/orders/#{@order.id}", :method => :patch do %>
+    <%= submit_tag "Complete Purchase!" %>
+  <% end -%>

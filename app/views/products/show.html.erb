@@ -22,6 +22,10 @@
     <% if @product.vendor %>
       <p>Vendor: <%= @product.vendor.name %></p>
       <% end %>
+
+      <p>Category: <%= @product_category_name.category.name %></p>
+      
+        
       <p>Sizes:</p>
       <% @product.product_options.each do |option| %>
       <option><%= option.name %></option>
@@ -64,11 +68,15 @@
     
     
     
-
-      <!-- <button class="buy_button">BUY</button> -->
-      <a href="/products/<%= @product.id %>/edit"><button class="buy_button">EDIT</button></a>
-
-      <a href="/products/<%= @product.id %>" data-method="delete" rel="nofollow" data-confirm="Are you sure you want to delete <%= @product.title %>"><button class="buy_button">DELETE</button></a>
+    <% if user_signed_in? && current_user.admin %>
+      <h4>Administration Dashboard</h4>
+      <div>
+      <a href="/products/<%= @product.id %>/edit">Edit this product</a>
+      </div>
+      <div>
+      <a href="/products/<%= @product.id %>" data-method="delete" rel="nofollow" data-confirm="Are you sure you want to delete <%= @product.title %>">Delete this product</a>
+      </div>
       <hr>
+    <% end %>
   </div>
 </section>

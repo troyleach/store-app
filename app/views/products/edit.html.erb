@@ -1,42 +1,74 @@
-<h2>Update Product</h2>
+<h3>Update Product:  <%= @product.title %></h3>
+<hr>
+<h4>Product ID: <%= @product.id %></h4>
+<div class="admin_edit_container row">
+  <div class="col-lg-4 col-md-4 edit_form">
+    <%= form_tag "/products/#{@product.id}", :method => :patch do %>
 
-<%= form_tag "/products/#{@product.id}", :method => :patch do %>
+    <div class="edit_label_tag">
+      <%= label_tag :price %>:
+    </div>
+    <div class="edit_text_field_tag">
+      <%= text_field_tag :price, @product.price %>
+    </div>
 
-  <div>
-    <%= label_tag :price %>
-    <%= text_field_tag :price, @product.price %>
+    <div class="edit_label_tag">
+      <%= label_tag :title %>:
+    </div>
+    <div class="edit_text_field_tag">
+      <%= text_field_tag :title, @product.title %>
+    </div>
+
+    <div class="edit_label_tag">
+      <%= label_tag :image %>:
+    </div>
+    <div class="edit_text_field_tag">
+      <%= text_field_tag :image, @product.image %>
+    </div>
+
+    <div class="edit_label_tag">
+      <%= label_tag :description %>:
+    </div>
+    <div class="edit_text_field_tag">
+      <%= text_field_tag :description, @product.description %>
+    </div>
+
+    <div class="edit_label_tag">
+      <%= label_tag :category_name %>:
+    </div>
+    <div class="edit_text_field_tag">
+      <%= text_field_tag :category_name, @product_category.category.name %>
+    </div>
+
+    <div class="edit_label_tag">
+      <%= label_tag :vendor_name %>:
+    </div>
+    <div class="edit_text_field_tag">
+      <%= text_field_tag :vendor_name, @product.vendor.name %>
+    </div>
+    <br>
+    <br>
+    <%= submit_tag "Update Product" %>
+
+    <% end %>
   </div>
 
-  <div>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, @product.title %>
+  <div class="col-lg-4 col-md-4 vendor_names">
+  <h4>Vendor</h4>
+  <ul>
+    <% @vendor_name.each do |vendor_name| %>
+     <li><%= vendor_name.name %></li>
+    <% end %>
+  </ul>
   </div>
 
-  <div>
-    <%= label_tag :image %>
-    <%= text_field_tag :image, @product.image %>
+
+  <div class="col-lg-4 col-md-4 categories">
+    <h4>Categories</h4>
+    <ul>
+      <% @product_category_name.each do |category| %>
+       <li><%= category.name %></li>
+      <% end %>
+    </ul>
   </div>
-
-  <div>
-    <%= label_tag :description %>
-    <%= text_field_tag :description, @product.description %>
-  </div>
-
-  <div>
-    <%= label_tag :category %>
-    <%= text_field_tag :category, @product.category %>
-  </div>
-
-  <div>
-    <%= label_tag :vendor_name %>
-    <%= text_field_tag :vendor_name, @product.vendor.name %>
-  </div>
-<br>
-<br>
-  <%= submit_tag "Update Product" %>
-
-<% end %>
-
-<br>
-<br>
-<a href="/"><button>HOME</button></a>
+</div><!-- End of edit_wrapper -->

@@ -1,8 +1,12 @@
 class ProductsController < ApplicationController
+  # before_filter :verify_is_admin
+  before_action :authenticate_admin!, :only => [:edit, :destroy]
+
 
   def index
     @products = Product.all
     @daily_deals = @products.sample(3)
+
 
     if params[:display] == "price"
       @products = @products.where("price < ?", 3000)
@@ -27,40 +31,81 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @product_category_name  = Category.all
+    @vendor_name            = Vendor.all
   end
 
   def create
-    vendor = Vendor.find_by(:name => params[:vendor_name])
+    category = Category.find_by(:name => params[:category_id]) 
+    vendor   = Vendor.find_by(:name => params[:vendor_id])
+puts "THIS IS CATEGORY and VENDOR .INSPECT"
+puts category.inspect
+puts vendor.inspect
+    @product = Product.new({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :vendor_id => vendor.id}) 
 
-    Product.create({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id })
+    # @product_category  = CategorizedProduct.find_by(:product_id => @product.id)
 
-    @new_product = Product.last
+    @product_category = CategorizedProduct.new({:category_id => category.id})
 
-    flash[:success] = "This Product added"
-    redirect_to "/products/#{@new_product.id}"
-    
+    puts "THIS IS PRODUCT, SHOULD HAVE ALL I NEED FOR CATEGORY******"
+    puts @product.inspect
+    if @product.save && @product_category.save
+      @new_product = Product.last
+      flash[:success] = "This Product added"
+      redirect_to "/products/#{@new_product.id}"
+    else
+      flash[:message] = "Something was wrong with your form"
+      render "new"
+    end
+
+    puts "*******THIS IS PRODUCT, DID IT RUN? WHAT DOES IT SAY******"
+    puts @product.inspect
+    puts @product_category.inspect
+    @product_category.update({:product_id => @product.id})
+    puts @product_category.inspect
+
   end
 
   def show
     if params[:id] == "random"
       @product = Product.all.sample
+      @product_category_name = CategorizedProduct.find_by(:product_id => @product.id)
     else
       @product = Product.find(params[:id])
+      @product_category_name = CategorizedProduct.find_by(:product_id => params[:id])
     end
+
     @options = ProductOption.all
     @images = Image.all
+    
   end
 
 
   def edit
-    @product = Product.find(params[:id])
+    # if user_signed_in? && current_user.admin
+      @product                = Product.find(params[:id])
+      @product_category       = CategorizedProduct.find_by(:product_id => params[:id])
+      @product_category_name  = Category.all
+      @vendor_name            = Vendor.all
+      # @product = Category.find_by(:id => params[:category]).product
+    # else
+    #   flash[:warning] = "Please don't do this"
+    # end
   end
 
 
   def update
     @product = Product.find(params[:id])
+    @product_category = CategorizedProduct.find_by(:product_id => params[:id])
+  
+    category = Category.find_by(:name => params[:category_name])
     vendor = Vendor.find_by(:name => params[:vendor_name])
-    @product.update({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :category => params[:category], :vendor_id => vendor.id})
+    
+    @product.update({:price => params[:price], :title => params[:title], :image => params[:image], :description => params[:description], :vendor_id => vendor.id})
+    
+    @product_category.update({:category_id => category.id})
+    
   end
   
 

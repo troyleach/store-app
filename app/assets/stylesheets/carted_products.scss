@@ -1,3 +1,103 @@
 // Place all the styles related to the carted_products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.carted_product_container {
+  border: 1px solid #333333;
+  float: left;
+  padding: 15px;
+  margin: auto;
+  width: 100%;
+}
+
+.carted_product_devider {
+  width: 95%;
+}
+
+.carted_product_header_empty {
+  border: none;
+  height: 20px;
+}
+
+.carted_product_header_item {
+  border: none;
+  height: 20px;
+  padding-left: 30px;
+  color: #333333;
+  font-style: oblique;
+}
+
+.carted_product_header_price {
+  border: none;
+  height: 20px;
+  text-align: center;
+  color: #333333;
+  font-style: oblique;
+}
+
+.carted_product_header_quantity {
+  border: none;
+  height: 20px;
+  text-align: center;
+  color: #333333;
+  font-style: oblique;
+}
+// - - - - - - - - - - - - - - - - - - - -
+
+.carted_product_image {
+  border: none;
+  margin-top: 10px;
+  
+}
+
+.carted_product_info {
+  border: none;
+  margin-top: 10px;
+}
+
+.carted_product_price {
+  border: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.price_font {
+  color: #ae323b;
+  font-weight: bold;
+}
+
+.carted_product_quantity {
+ border: none; 
+ text-align: center;
+ margin-top: 10px;
+}
+
+// - - - - - - - - - - - - - - - - - - - -
+
+.carted_product_footer_subtotal {
+  border: none;
+  height: 20px;
+  font-size: 1.3em;
+  color: #333333;
+  font-style: oblique;
+}
+
+.carted_product_footer_price {
+  border: none;
+  height: 20px;
+  text-align: center;
+  color: #ae323b;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.carted_product_footer_quantity {
+  border: none;
+  height: 20px;
+  text-align: center;
+  color: #ae323b;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+
+// - - - - - - - - - - - - - - - - - - - -

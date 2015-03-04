@@ -28,8 +28,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="\">Home<span class="sr-only">(current)</span></a></li>
+        
+          <% if user_signed_in? && current_user.admin %>  
             <li><a href="/products/new">Add</a></li>
-            <li><a href="/products/random">Random Product</a></li>
+          <% end %>
+        
+            <li><a href="/products/random">Random Product<span class="sr-only">(current)</span></a></li>
             <li><a href="/?price=order">Lowest => Highest</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
@@ -47,9 +51,15 @@
               <li><a href="/users/sign_out">logout</a></li>
               <% else %>
               <li><a href="/users/sign_in">login</a></li>
-            <li><a href="/users/sign_up">Sign-up</a></li>
+              <li><a href="/users/sign_up">Sign-up</a></li>
             <% end %>
-            <li class="cart_font"><a href="carted-products"><span class="glyphicon glyphicon-shopping-cart shopping_cart" aria-hidden="true"></a></span>cart</li>
+
+            <% if current_user %>
+            <li class="nav_current_user">Hello <%= current_user.username %></li>
+            <% end %>
+<!-- my autherations don't work here for my shopping cart -->
+            <li class="cart_font"><a href="carted-products"><span class="glyphicon glyphicon-shopping-cart shopping_cart" aria-hidden="true"></a></span>cart <%= @carted_products_quantity_total %></li>
+
             
           </ul>
           

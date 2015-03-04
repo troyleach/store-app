@@ -4,33 +4,38 @@ class Order < ActiveRecord::Base
   belongs_to  :product_option
   has_many    :carted_products
   has_many    :products, :through => :carted_products
-
-
   SALES_TAX = 0.09
-  #The below methods no longer work, I assume issues with the associations above?
-  # def calculate_subtotal
-  #   return product.price * quantity
-  # end
+  # validates :user_id, presence: true
 
-  # def calculate_tax
-  #   return SALES_TAX * calculate_subtotal
-  # end
+  # validates :subtotal, numericality: true
+  # validates :subtotal, numericality: { only_integer: true }
+  # validates :subtotal, presence: true
 
-  # def calculate_total
-  #   return calculate_subtotal + calculate_tax
-  # end
+  # validates :tax, numericality: true
+  # validates :tax, numericality: { only_integer: true }
+  # validates :tax, presence: true
 
-  def carted
-    return "carted"
+  # validates :total, numericality: true
+  # validates :total, numericality: { only_integer: true }
+  # validates :total, presence: true
+
+  # validates :status, acceptance: { accept: 'carted' }
+  # validates :status, acceptance: { accept: 'purchased' }
+
+  def calculate_subtotal
+    subtotal = 0
+    carted_products.each do |carted_product|
+      subtotal += carted_product.calculate_price
+    end
+    subtotal
   end
 
-  def purchased
-    # if order.status == "carted"
-    #   carted_products.quantity + quantity
-    # end
-
+  def calculate_tax
+    SALES_TAX * calculate_subtotal
   end
 
-
+  def calculate_total
+    calculate_subtotal + calculate_tax
+  end
 
 end

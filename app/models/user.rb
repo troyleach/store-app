@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
+  validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
 
   # validates :password, presence: true, length: { minimum: 6 } if new?
   # validates :password_confirmation, presence: true if new?
@@ -25,10 +26,5 @@ class User < ActiveRecord::Base
    end
  end
 
- validates :username,
-   :presence => true,
-   :uniqueness => {
-     :case_sensitive => false
-   }
    
 end
